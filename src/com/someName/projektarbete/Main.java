@@ -41,7 +41,7 @@ public class Main {
 
         System.out.println(deckOfCards.get(1));
         System.out.println(deckOfCards.get(2));
-        System.out.println("Your hand is: " +  );
+        System.out.println("Your hand is: "  );
 
         System.out.println();
         System.out.println("Do you want to (1)Hit or (2)Stand?");
