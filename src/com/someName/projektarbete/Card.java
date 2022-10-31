@@ -21,6 +21,14 @@ public class Card {
         this.cardValue = cardValue;
     }
 
+
+    public int getRealValue () {
+        return switch (cardValue) {
+            case "Ace" -> 1;
+            case "Jack", "Queen", "King" -> 10;
+            default -> Integer.parseInt(cardValue);
+        };
+    }
     @Override
     public String toString() {
         return cardValue + cardSymbol;

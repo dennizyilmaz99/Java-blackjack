@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-
+    String cardSymbols;
     private final List<Card> deckList = new ArrayList<>(52);
 
 
@@ -17,8 +17,8 @@ public class Deck {
                 " of Diamonds ♢ ",   " of Clubs ♧" };
 
         final String[] cardValues = {
-                "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                "Jack", "Queen", "King", "Ace" };
+                "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                "Jack", "Queen", "King" };
 
         for (String cardSymbol : cardSymbols) {
 
