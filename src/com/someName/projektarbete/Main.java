@@ -1,5 +1,6 @@
 package com.someName.projektarbete;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +10,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String player;
-        String result;
         int betDollar;
         int choice;
         int hit = 1;
@@ -39,41 +39,35 @@ public class Main {
 
         List<Card> deckOfCards = deckTemplate.generateDeck();
         List<Card> totalOfCards = new ArrayList<>();
+        List<Card> handOfCards = new ArrayList<>();
+
         totalOfCards.add(deckOfCards.get(0));
         deckOfCards.remove(0);
         totalOfCards.add(deckOfCards.get(1));
         deckOfCards.remove(1);
         System.out.println("The dealer gave you: " + totalOfCards.get(0) + totalOfCards.get(1));
         int sum = 0;
-        int sum1 = 0;
         for (int i = 0; i < totalOfCards.size(); i++) {
-            sum += totalOfCards.get(0).getRealValue();
-            sum += totalOfCards.get(1).getRealValue();
+            sum += totalOfCards.get(i).getRealValue();
         }
-
-        System.out.println("Your hand is now " + sum);
-
-
-        /*
-        System.out.println(deckOfCards.get(1));
-        System.out.println(deckOfCards.get(2));
-
-        int value = Integer.parseInt(String.valueOf(deckOfCards.get(1))) + Integer.parseInt(String.valueOf(deckOfCards.get(2)));
-            result = String.valueOf(value);
-            System.out.println("Your hand is " + value);
-
-
+        System.out.println("Your hand is: " + sum);
         System.out.println();
         System.out.println("Do you want to (1)Hit or (2)Stand?");
         choice = scanner.nextInt();
         if (choice == hit) {
-            System.out.println("The dealer has given you " + deckOfCards.get(3));
-        } else if (choice == stand) {
+
+        }else if (choice == stand){
             System.out.println("You chose to stand");
-        } else {
-            System.out.println("Please choose a number between 1 or 2");
         }
-         */
+
+
+        handOfCards.add(deckOfCards.get(0));
+        deckOfCards.remove(0);
+        System.out.println("The dealer gave you another card: " + handOfCards.get(0));
+        for (int i = 0; i < handOfCards.size(); i++) {
+            sum += handOfCards.get(i).getRealValue();
+        }
+        System.out.println("Your hand is now: " + sum);
 
     }
 }

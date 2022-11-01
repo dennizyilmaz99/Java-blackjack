@@ -13,7 +13,7 @@ public class Card {
         this.cardSymbol = cardSymbol;
     }
 
-    public String getCardValue() {
+    public String getCardValue(Card card) {
         return cardValue;
     }
 
