@@ -33,41 +33,59 @@ public class Main {
             System.out.println("Congrats champ!, you have now " + betDollar + "$");
         }
         System.out.println("The game starts now! Good luck champ!");
-        System.out.println();
 
         Deck deckTemplate = new Deck();
 
         List<Card> deckOfCards = deckTemplate.generateDeck();
         List<Card> totalOfCards = new ArrayList<>();
         List<Card> handOfCards = new ArrayList<>();
+        List<Card> dealersCards = new ArrayList<>();
 
         totalOfCards.add(deckOfCards.get(0));
         deckOfCards.remove(0);
         totalOfCards.add(deckOfCards.get(1));
         deckOfCards.remove(1);
+        System.out.println();
         System.out.println("The dealer gave you: " + totalOfCards.get(0) + totalOfCards.get(1));
         int sum = 0;
         for (int i = 0; i < totalOfCards.size(); i++) {
             sum += totalOfCards.get(i).getRealValue();
         }
         System.out.println("Your hand is: " + sum);
+
         System.out.println();
+
+        dealersCards.add(deckOfCards.get(0));
+        deckOfCards.remove(0);
+        System.out.println("The dealer draws " + dealersCards.get(0) + " and have one card faced down");
+        int sum1 = 0;
+        for (int i = 0; i < dealersCards.size(); i++) {
+            sum1 += dealersCards.get(i).getRealValue();
+        }
+        System.out.println("Dealers hand is: " + sum1);
+
+        System.out.println();
+
         System.out.println("Do you want to (1)Hit or (2)Stand?");
         choice = scanner.nextInt();
-        if (choice == hit) {
-
-        }else if (choice == stand){
-            System.out.println("You chose to stand");
-        }
-
-
         handOfCards.add(deckOfCards.get(0));
         deckOfCards.remove(0);
-        System.out.println("The dealer gave you another card: " + handOfCards.get(0));
         for (int i = 0; i < handOfCards.size(); i++) {
-            sum += handOfCards.get(i).getRealValue();
+            if (choice == hit) {
+                System.out.println("The dealer gave you a new card: " + handOfCards.get(0));
+                sum += handOfCards.get(i).getRealValue();
+                System.out.println("Your hand is now: " + sum);
+                if (sum == 21) {
+                    System.out.println("Congrats you won " + betDollar * 1.5);
+                } else if (sum > 21) {
+                    System.out.println("You lose! You have " + (1000 - betDollar + "$ left. Try again!"));
+                }
+        }else if (choice == stand){
+                System.out.println("You chose to stand");
+            } else
+                System.out.println("Please pick a number between 1 or 2.");
         }
-        System.out.println("Your hand is now: " + sum);
-
+        //System.out.println("The dealer draws a new card " + dealersCards.get(2));
+        //for (int i = 0; i < dealersCards.size(); i++) {}
     }
 }
